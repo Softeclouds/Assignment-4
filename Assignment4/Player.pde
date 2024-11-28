@@ -7,6 +7,8 @@ class Player { // creates a new class
  //////////////////// Key Action variables //////////////
  boolean isLeft;  // a key
  boolean isRight; // d key
+ boolean isGrounded; 
+ boolean isJumping;
  
  boolean isPressed; // mouse being pressed
  
@@ -14,6 +16,7 @@ class Player { // creates a new class
  Player(){
  // initilising variables
  playerXpos = width/2;
+ isGrounded = true; 
  speed = 2;
  }
  
@@ -35,6 +38,12 @@ void move(int k, boolean b){ // checks which keys are being pressed and sets dir
 // code from my previous assignment
  if (k == 'A')  {isLeft = b;} 
  else if (k == 'D') {isRight = b;} 
+ else if (k == ' ' && isGrounded == true) { 
+ isGrounded = false;
+ isJumping = b;
+   }
+   
+   if(isJumping == true) {println("jump");}
  }
 
 
