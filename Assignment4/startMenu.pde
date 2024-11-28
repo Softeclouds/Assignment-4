@@ -26,8 +26,6 @@ class MenuScreen {
     } // end of if mouseY menu
   } // end of if mouseX menu
   }
-  void bgArt(){
   
-  }
   
 }

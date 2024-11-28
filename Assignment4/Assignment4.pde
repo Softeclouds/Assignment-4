@@ -9,6 +9,8 @@ MenuScreen menuScreen;
 CharScreen charScreen;
 GameScreen gameScreen;
 
+PImage charSelects;
+
 void setup(){
   size(800,500);
   
@@ -16,6 +18,8 @@ void setup(){
   charScreen = new CharScreen();
   gameScreen = new GameScreen();
   screenState = menuActive;
+  
+  charSelects = loadImage("CharSelect.png");
 }
 
 void draw(){
