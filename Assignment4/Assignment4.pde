@@ -3,6 +3,10 @@ int charActive = 1;
 int gameActive = 2;
 int screenState;
 
+int astrid = 0;
+int xander = 1;
+int heroState;
+
 boolean isClick;    // is the mouse being clicked
 
 MenuScreen menuScreen;
