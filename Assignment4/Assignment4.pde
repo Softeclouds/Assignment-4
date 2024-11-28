@@ -12,8 +12,11 @@ boolean isClick;    // is the mouse being clicked
 MenuScreen menuScreen;
 CharScreen charScreen;
 GameScreen gameScreen;
+Player player;
 
 PImage charSelects;
+PImage astridStand;
+PImage xanderStand;
 
 void setup(){
   size(800,500);
@@ -21,9 +24,12 @@ void setup(){
   menuScreen = new MenuScreen();
   charScreen = new CharScreen();
   gameScreen = new GameScreen();
+  player = new Player();
   screenState = menuActive;
   
   charSelects = loadImage("CharSelect.png");
+  astridStand = loadImage("AstridStand0.png");
+  xanderStand = loadImage("XanderStand0.png");
 }
 
 void draw(){
@@ -42,3 +48,11 @@ void draw(){
 void mouseClicked() {
   isClick = true; 
 } // end of mouseClicked
+
+void keyPressed() {
+  player.move(keyCode, true); // when a key is pressed, that directions boolean is set to true
+}
+
+void keyReleased() {
+  player.move(keyCode, false); // when a key is released, that directions boolean is set to false
+} // end of keyReleased
