@@ -86,10 +86,7 @@ void move(int k, boolean b){ // checks which keys are being pressed and sets dir
    if(isJumping == true) {println("jump");}
  }
 void update() {
-  
-    
-  
-  println(isGrounded);
+  //println(isGrounded);
   if(!isGrounded){
     velocity.add(acceleration);
   }
@@ -104,6 +101,14 @@ void update() {
 void healthCheck(){
   if(health <= 0) {
     screenState = failedActive;
+  }
+}
+
+void platformCheck(){
+  for(int i = 0; i < platforms.length; i++){
+    if(player.position.y+44 >= platforms[i].position.y){
+      println("position.y");
+    }
   }
 }
 
