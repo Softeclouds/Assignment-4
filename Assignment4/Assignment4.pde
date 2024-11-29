@@ -17,6 +17,7 @@ GameScreen gameScreen;
 GameOver gameOver;
 Player player;
 Platform platform;
+Enemy enemy;
 
 PImage charSelects;
 PImage astridStand;
@@ -31,6 +32,8 @@ void setup(){
   gameOver = new GameOver();
   player = new Player();
   platform = new Platform();
+  
+  enemy = new Enemy();
   screenState = menuActive;
   
   charSelects = loadImage("CharSelect.png");

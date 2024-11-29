@@ -86,7 +86,7 @@ void move(int k, boolean b){ // checks which keys are being pressed and sets dir
    if(isJumping == true) {println("jump");}
  }
 void update() {
-  println(isGrounded);
+  //println(isGrounded);
   if(!isGrounded){
     velocity.add(acceleration);
   }

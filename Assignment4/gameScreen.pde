@@ -11,6 +11,8 @@ class GameScreen {
     player.movePlayer();    // moving the player
     player.healthCheck();
     player.update();
+    enemy.display();
+    enemy.update();
     
   }
   
