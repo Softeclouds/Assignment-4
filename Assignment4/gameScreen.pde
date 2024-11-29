@@ -10,6 +10,7 @@ class GameScreen {
     player.display();       // drawing the player
     player.movePlayer();    // moving the player
     player.healthCheck();
+    player.update();
     
   }
   
