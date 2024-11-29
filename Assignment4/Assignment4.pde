@@ -16,7 +16,8 @@ CharScreen charScreen;
 GameScreen gameScreen;
 GameOver gameOver;
 Player player;
-Platform platform;
+//Platform platform;
+Platform[] platforms = new Platform[10];
 
 PImage charSelects;
 PImage astridStand;
@@ -30,8 +31,13 @@ void setup(){
   gameScreen = new GameScreen();
   gameOver = new GameOver();
   player = new Player();
-  platform = new Platform();
+
   screenState = menuActive;
+  platforms[0] = new Platform(400,344,200,20); // plus 44 cause sprites are 44 pixels tall
+  platforms[1] = new Platform(400,100,60,20);
+  /*for(int i = 0; i < platforms.length; i++){
+    platforms[i] = new Platform(
+  } */
   
   charSelects = loadImage("CharSelect.png");
   astridStand = loadImage("AstridStand0.png");

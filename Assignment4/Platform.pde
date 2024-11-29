@@ -1,12 +1,19 @@
 class Platform {
-
+PVector position;
+int w;
+int h;
   
-  Platform(){
-   rectMode(CORNERS);
+  Platform(int x, int y, int wid, int hig){
+ position = new PVector(x,y);
+ w = wid;
+ h = hig;
+ 
   }
   
-  void display(int x, int y){
-    rect(x, y, x+60, y+20);
+  void display(){
+    rectMode(CENTER);
+    fill(255);
+    rect(position.x, position.y, w, h);
   }
   
 }
