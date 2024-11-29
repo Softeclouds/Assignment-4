@@ -71,10 +71,15 @@ void move(int k, boolean b){ // checks which keys are being pressed and sets dir
  isJumping = b;
    }
    else if (k == 'Q') {isShift = b;}
-   else if (k == 'R') {screenState = failedActive;}
+   else if (k == 'R') {health = health-5;}
    
    if(isJumping == true) {println("jump");}
  }
 
+void healthCheck(){
+  if(health <= 0) {
+    screenState = failedActive;
+  }
+}
 
 } // end of player class

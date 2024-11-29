@@ -4,6 +4,7 @@ class CharScreen {
   }
   
   void drawChar(){
+    player.health = 20; // resetting health after a restart
     rectMode(CORNERS);
     noStroke();
     background(100);
