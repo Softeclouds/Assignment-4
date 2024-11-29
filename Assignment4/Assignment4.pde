@@ -1,6 +1,7 @@
 int menuActive = 0;
 int charActive = 1;
 int gameActive = 2;
+int failedActive = 3;
 int screenState;
 
 int astrid = 0;
@@ -13,6 +14,7 @@ boolean isShift;
 MenuScreen menuScreen;
 CharScreen charScreen;
 GameScreen gameScreen;
+GameOver gameOver;
 Player player;
 Platform platform;
 
@@ -26,6 +28,7 @@ void setup(){
   menuScreen = new MenuScreen();
   charScreen = new CharScreen();
   gameScreen = new GameScreen();
+  gameOver = new GameOver();
   player = new Player();
   platform = new Platform();
   screenState = menuActive;
@@ -44,6 +47,9 @@ void draw(){
   }
   if(screenState == gameActive){
     gameScreen.drawGame();
+  }
+  if(screenState == failedActive){
+    gameOver.display();
   }
   
 }

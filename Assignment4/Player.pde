@@ -68,6 +68,7 @@ void move(int k, boolean b){ // checks which keys are being pressed and sets dir
  isJumping = b;
    }
    else if (k == 'Q') {isShift = b;}
+   else if (k == 'R') {screenState = failedActive;}
    
    if(isJumping == true) {println("jump");}
  }
