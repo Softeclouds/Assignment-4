@@ -26,7 +26,6 @@ class Player { // creates a new class
  // initilising variables
  position = new PVector(width/2, 300);
  velocity = new PVector(0,0);         // initialize the velocity to start not moving
- acceleration = new PVector(0.1,0);   // initialize the acceleration to gravity like acceleration
  isGrounded = true; 
  health = 20;
  acceleration = new PVector(0, gravity);   // initialize the acceleration to gravity like acceleration
@@ -96,7 +95,8 @@ void update() {
     position.y = 290;
     velocity.y = 0;
     isGrounded = true;
-    
+  }
+}
 
 void healthCheck(){
   if(health <= 0) {
