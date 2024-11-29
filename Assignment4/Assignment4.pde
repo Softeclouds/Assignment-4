@@ -8,11 +8,13 @@ int xander = 1;
 int heroState;
 
 boolean isClick;    // is the mouse being clicked
+boolean isShift;
 
 MenuScreen menuScreen;
 CharScreen charScreen;
 GameScreen gameScreen;
 Player player;
+Platform platform;
 
 PImage charSelects;
 PImage astridStand;
@@ -25,6 +27,7 @@ void setup(){
   charScreen = new CharScreen();
   gameScreen = new GameScreen();
   player = new Player();
+  platform = new Platform();
   screenState = menuActive;
   
   charSelects = loadImage("CharSelect.png");
