@@ -3,7 +3,7 @@ class Player { // creates a new class
  ////////////////// position variables /////////////////////
  int playerXpos; 
  int speed;
- float jumpStrength = -10;
+ PVector jumpStrength;
  float gravity = 0.5;
  
  //////////////////// Key Action variables //////////////
@@ -25,6 +25,7 @@ class Player { // creates a new class
  position = new PVector(width/2, 300);
  velocity = new PVector(0,0);         // initialize the velocity to start not moving
  acceleration = new PVector(0, gravity);   // initialize the acceleration to gravity like acceleration
+ jumpStrength = new PVector(0,-10);
  //isGrounded = true; 
 
 
@@ -70,7 +71,8 @@ void move(int k, boolean b){ // checks which keys are being pressed and sets dir
  else if (k == 'D') {isRight = b;} 
  else if (k == ' ' && isGrounded == true) { 
     isGrounded = false;
- velocity.y = jumpStrength;
+    
+ velocity.add(jumpStrength);
 
 
    }
@@ -79,14 +81,16 @@ void move(int k, boolean b){ // checks which keys are being pressed and sets dir
   
  }
 void update() {
+  println(isGrounded);
   if(!isGrounded){
     velocity.add(acceleration);
   }
   position.add(velocity);
-  if(position.y >=300) {
-    position.y = 300;
+  if(position.y >=290) {
+    position.y = 290;
     velocity.y = 0;
     isGrounded = true;
+    
   }
 }
 
