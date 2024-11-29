@@ -17,6 +17,8 @@ class Player { // creates a new class
  PVector velocity;
  PVector acceleration;
  
+ int health;
+ 
  
  Player(){
  // initilising variables
@@ -24,6 +26,7 @@ class Player { // creates a new class
  velocity = new PVector(0,0);         // initialize the velocity to start not moving
  acceleration = new PVector(0.1,0);   // initialize the acceleration to gravity like acceleration
  isGrounded = true; 
+ health = 20;
 
 
  }
@@ -68,9 +71,15 @@ void move(int k, boolean b){ // checks which keys are being pressed and sets dir
  isJumping = b;
    }
    else if (k == 'Q') {isShift = b;}
+   else if (k == 'R') {health = health-5;}
    
    if(isJumping == true) {println("jump");}
  }
 
+void healthCheck(){
+  if(health <= 0) {
+    screenState = failedActive;
+  }
+}
 
 } // end of player class

@@ -9,6 +9,7 @@ class GameScreen {
     platform.display(300,344);
     player.display();       // drawing the player
     player.movePlayer();    // moving the player
+    player.healthCheck();
     
   }
   
