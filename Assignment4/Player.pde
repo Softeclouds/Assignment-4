@@ -11,6 +11,8 @@ class Player { // creates a new class
  boolean isRight; // d key
  boolean isGrounded; 
  boolean isJumping;
+ boolean overY;
+ boolean overX;
 
  
  boolean isPressed; // mouse being pressed
@@ -24,13 +26,12 @@ class Player { // creates a new class
  
  Player(){
  // initilising variables
- position = new PVector(width/2, 300);
+ position = new PVector(width/2, 250);
  velocity = new PVector(0,0);         // initialize the velocity to start not moving
  isGrounded = true; 
  health = 20;
  acceleration = new PVector(0, gravity);   // initialize the acceleration to gravity like acceleration
  jumpStrength = new PVector(0,-10);
- //isGrounded = true; 
 
 
  }
@@ -67,49 +68,57 @@ void movePlayer(){
   position.x +=speed;     //.add(velocity);
   }
   else { velocity.x = 0; }
-  playerXpos = constrain(playerXpos + speed *(int(isRight) - int(isLeft)), 5, 770);
+ 
 }
 void move(int k, boolean b){ // checks which keys are being pressed and sets direction to true
 // code from my previous assignment
  if (k == 'A')  {isLeft = b;} 
  else if (k == 'D') {isRight = b;} 
  else if (k == ' ' && isGrounded == true) { 
-    isGrounded = false;
-    
+    isGrounded = false; 
  velocity.add(jumpStrength);
-
-
    }
+   
    else if (k == 'Q') {isShift = b;}
    else if (k == 'R') {health = health-5;}
    
    if(isJumping == true) {println("jump");}
  }
 void update() {
+  if(overX == true && overY == true) { isGrounded = true;}
   //println(isGrounded);
   if(!isGrounded){
     velocity.add(acceleration);
   }
   position.add(velocity);
-  if(position.y >=290) {
-    position.y = 290;
-    velocity.y = 0;
-    isGrounded = true;
+  if(overX == true && overY == false) {
+    isGrounded = false;
+     position.y = platforms[0].position.y-54;
+     velocity.y = 0;
+  }
+  if(overY == true && overX == false){
+    isGrounded = false;
+    
   }
 }
 
 void healthCheck(){
-  if(health <= 0) {
+  if(health <= 0 || position.y > 500) {
     screenState = failedActive;
   }
 }
 
 void platformCheck(){
   for(int i = 0; i < platforms.length; i++){
-    if(player.position.y+44 >= platforms[i].position.y){
+    if(player.position.y +44 >= platforms[0].position.y-10){
       println("position.y");
-    }
-  }
+      overY = true;  
+    } else { overY = false;}
+     if(player.position.x+18 >= platforms[0].position.x-100 && player.position.x <= platforms[0].position.x+100){
+      println("position.x");
+      overX = true;
+     } else { overX = false; }
+    }  
 }
 
 } // end of player class

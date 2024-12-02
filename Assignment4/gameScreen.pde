@@ -12,6 +12,7 @@ class GameScreen {
     player.movePlayer();    // moving the player
     player.healthCheck();
     player.update();
+    player.platformCheck();
     
   }
   
