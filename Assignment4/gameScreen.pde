@@ -10,18 +10,13 @@ class GameScreen {
     platform.display();
   }
     player.display();       // drawing the player
-    //player.movePlayer();    // moving the player
     player.healthCheck();
     player.update();
     
   //  enemy.display();
   //  enemy.update();
-  //  player.platformCheck();
     
   }
   
   }
-  void bgArt(){
-  
-  }
-  
+ 
