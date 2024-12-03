@@ -6,13 +6,15 @@ class GameScreen {
   void drawGame(){
     background(0);
     rectMode(CORNERS);
-    platform.display(300,344);
+    platforms[0].display();
+    platforms[1].display();
     player.display();       // drawing the player
     player.movePlayer();    // moving the player
     player.healthCheck();
     player.update();
     enemy.display();
     enemy.update();
+    player.platformCheck();
     
   }
   

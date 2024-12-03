@@ -5,6 +5,7 @@ class CharScreen {
   
   void drawChar(){
     player.health = 20; // resetting health after a restart
+    player.position = new PVector(width/2, 250);
     rectMode(CORNERS);
     noStroke();
     background(100);
