@@ -7,6 +7,8 @@ class CharScreen {
     player.health = 20; // resetting health after a restart
     player.position = new PVector(width/2, 250);
     player.isGrounded = true;
+    astridStand = loadImage("AstridStand0.png");
+    xanderStand = loadImage("XanderStand0.png");
     rectMode(CORNERS);
     noStroke();
     background(100);

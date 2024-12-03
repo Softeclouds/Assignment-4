@@ -11,11 +11,10 @@ class Enemy{
   void update(){
     if(player.position.x > position.x && player.position.x < position.x +40){
       //println("x collide");
-      if(heroState == xander){
-          xanderStand = loadImage("XanderStandhit0.png");
-      if(player.position.y -30 > position.y && player.position.y - 30 < position.y + 40) {
+      if(player.position.y +44 >= position.y -40 && player.position.y <= position.y) {
         println("y collide");
-        
+         if(heroState == xander){
+          xanderStand = loadImage("XanderStandhit0.png");
         }
       }
     }
