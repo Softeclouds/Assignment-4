@@ -112,11 +112,12 @@ void healthCheck(){
 
 void platformCheck(){
   for(int i = 0; i < platforms.length; i++){
-    if(player.position.y +44 >= platforms[0].position.y-10){
+    if(position.y +44 >= platforms[0].position.y-10 && position.y +44 <= platforms[0].position.y){
       println("position.y");
       isJumping = false;
       overY = true;  
     } else { overY = false;}
+   
      if(player.position.x+18 >= platforms[0].position.x-100 && player.position.x <= platforms[0].position.x+100){
       println("position.x");
       overX = true;

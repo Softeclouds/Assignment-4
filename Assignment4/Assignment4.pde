@@ -33,7 +33,6 @@ void setup(){
   gameScreen = new GameScreen();
   gameOver = new GameOver();
   player = new Player();
-  platform = new Platform();
   
   enemy = new Enemy();
 
