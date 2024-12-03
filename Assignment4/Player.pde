@@ -75,6 +75,7 @@ void move(int k, boolean b){ // checks which keys are being pressed and sets dir
  if (k == 'A')  {isLeft = b;} 
  else if (k == 'D') {isRight = b;} 
  else if (k == ' ' && isGrounded == true) { 
+   isJumping = true;
     isGrounded = false; 
  velocity.add(jumpStrength);
    }
@@ -93,12 +94,13 @@ void update() {
   position.add(velocity);
   if(overX == true && overY == false) {
     isGrounded = false;
+  }
+  if(isJumping == false && isGrounded){
      position.y = platforms[0].position.y-54;
      velocity.y = 0;
-  }
+    }
   if(overY == true && overX == false){
-    isGrounded = false;
-    
+    isGrounded = false;  
   }
 }
 
@@ -112,6 +114,7 @@ void platformCheck(){
   for(int i = 0; i < platforms.length; i++){
     if(player.position.y +44 >= platforms[0].position.y-10){
       println("position.y");
+      isJumping = false;
       overY = true;  
     } else { overY = false;}
      if(player.position.x+18 >= platforms[0].position.x-100 && player.position.x <= platforms[0].position.x+100){
