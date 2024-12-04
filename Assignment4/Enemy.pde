@@ -1,30 +1,25 @@
-/*
+class Enemy {
+  PVector position;
+  PVector velocity;
+  float size = 40;
+  float gravity = 0.5;
 
+  Enemy(float x, float y) {
+    position = new PVector(x, y);
+    velocity = new PVector(0, 0);
+  }
 
-class Enemy{
-   PVector position;
-  Enemy(){
-   position = new PVector(400,300);
+  void update() {
+    // Apply gravity
+    velocity.y += gravity;
+
+    // Update position based on velocity
+    position.add(velocity);
   }
-  
-  void display(){
-    rectMode(CORNER);
-    rect(position.x,position.y,40,40);
+
+  void display() {
+    fill(255, 0, 0);  // Red color for enemy
+    noStroke();
+    ellipse(position.x, position.y, size, size);  // Draw enemy as a circle
   }
-  void update(){
-    if(player.position.x > position.x && player.position.x < position.x +40){
-      //println("x collide");
-      if(player.position.y +44 >= position.y -40 && player.position.y <= position.y) {
-        println("y collide");
-         if(heroState == xander){
-          xanderStand = loadImage("XanderStandhit0.png");
-        }
-      }
-    }
-  }
-  
-  
-  
 }
-
-*/

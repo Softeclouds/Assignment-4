@@ -20,6 +20,7 @@ Player player;
 //Enemy enemy;
 
 ArrayList<Platform> platforms = new ArrayList<Platform>();
+ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
 
 PImage charSelects;
@@ -31,6 +32,7 @@ PImage restart;
 
 void setup(){
   size(800,500);
+  frameRate(60);
   
   menuScreen = new MenuScreen();
   charScreen = new CharScreen();
@@ -38,13 +40,17 @@ void setup(){
   gameOver = new GameOver();
   player = new Player();
   
- // enemy = new Enemy();
+  
 
   screenState = menuActive;
 
-  platforms.add(new Platform(400, 344, 200, 20));
-  platforms.add(new Platform(350, 300, 150, 20));
-  platforms.add(new Platform(600, 500, 180, 20));
+  platforms.add(new Platform(690, 245, 190, 20));
+  platforms.add(new Platform(470, 315, 150, 20));
+  platforms.add(new Platform(675, 405, 120, 20));
+  platforms.add(new Platform(255, 255, 100, 20));
+  platforms.add(new Platform(220, 165, 290, 20));
+  platforms.add(new Platform(125, 415, 240, 20));
+  platforms.add(new Platform(335, 355, 20, 20));
   
   charSelects = loadImage("CharSelect.png");
   astridStand = loadImage("AstridStand0.png");

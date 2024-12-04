@@ -4,7 +4,7 @@ class Player {
   float sHeight = 44;
   float sWidth = 18;
   boolean onGround;
-  int health = 20;
+  int health = 3;
 
   boolean isLeft;  // a key
   boolean isRight; // d key
@@ -32,7 +32,7 @@ class Player {
       isGrounded = false;
       velocity.add(jumpStrength);
     }
-    else if(k == 'R') {health = health-5;}
+    //else if(k == 'R') {health = health-5;}
     else if(k == SHIFT) {isShift = b;}
   }
  void healthCheck(){
