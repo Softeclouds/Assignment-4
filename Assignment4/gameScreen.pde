@@ -1,7 +1,6 @@
 class GameScreen {
    
    int scoring = 1000;
-   int spawner = 1000;
    int score;
    
   GameScreen(){
@@ -10,7 +9,7 @@ class GameScreen {
   
   void drawGame(){
     int elapsedTime = millis() - startTime;
-    if (elapsedTime > scoring) {
+    if (elapsedTime >= scoring) {
       scoring += 1000;
       startTime = millis();
       score = scoring/1000;
@@ -24,7 +23,16 @@ class GameScreen {
     player.display();       // drawing the player
     player.update();
     
- 
+    
+    
+    PFont font;
+    font = createFont("Power red and green", 15);
+    textAlign(CENTER);
+    textFont(font);
+    textSize(50);
+    fill(255);
+    text("Score: " +score,100,50);
+    
      for (int i = 0; i < enemies.size(); i++) {
     Enemy enemy = enemies.get(i);
     enemy.update();  // Update enemy position
@@ -47,14 +55,12 @@ class GameScreen {
   }
   
    void spawnEnemies() {
-
-    int elapsedTime = millis() - startTime;
-  if (elapsedTime > spawner) {  
-    
-    float spawnX = random(0, width);  // Random X position across the whole screen
+    if(frameCount % 60 == 0){
+    float spawnX = random(player.position.x -100, player.position.x +100);  // Random X position above player
     float spawnY = -50;  // Start from above the screen
     enemies.add(new Enemy(spawnX, spawnY));  // Create and add a new enemy
   }
+  
   
   }
 }

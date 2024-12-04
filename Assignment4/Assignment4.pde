@@ -9,6 +9,7 @@ int xander = 1;
 int heroState;
 
 int startTime;
+int score;
 
 boolean isClick;    // is the mouse being clicked
 boolean isShift;
