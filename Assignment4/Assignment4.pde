@@ -2,6 +2,7 @@ int menuActive = 0;
 int charActive = 1;
 int gameActive = 2;
 int failedActive = 3;
+int youWin = 4;
 int screenState;
 
 int astrid = 0;
@@ -18,6 +19,7 @@ MenuScreen menuScreen;
 CharScreen charScreen;
 GameScreen gameScreen;
 GameOver gameOver;
+Winning winning;
 Player player;
 
 //Enemy enemy;
@@ -32,6 +34,7 @@ PImage xanderStand;
 
 PImage title;
 PImage restart;
+PImage winScreen;
 
 PImage spike;
 
@@ -43,6 +46,7 @@ void setup(){
   charScreen = new CharScreen();
   gameScreen = new GameScreen();
   gameOver = new GameOver();
+  winning = new Winning();
   player = new Player();
   
   
@@ -63,6 +67,7 @@ void setup(){
   title = loadImage("Title.png");
   restart = loadImage("Restart.png");
   spike = loadImage("Spike.png");
+  winScreen = loadImage("youWin.png");
 }
 
 void draw(){
@@ -77,6 +82,9 @@ void draw(){
   }
   if(screenState == failedActive){
     gameOver.display();
+  }
+  if(screenState == youWin){
+    winning.display();
   }
   
 }

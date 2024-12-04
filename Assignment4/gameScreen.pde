@@ -23,8 +23,6 @@ class GameScreen {
     player.display();       // drawing the player
     player.update();
     
-    
-    
     PFont font;
     font = createFont("Power red and green", 15);
     textAlign(CENTER);
@@ -53,6 +51,10 @@ class GameScreen {
   }
     player.healthCheck();
     spawnEnemies();
+    
+    if(score == 10){
+      screenState = youWin;
+    }
   }
   
    void spawnEnemies() {
