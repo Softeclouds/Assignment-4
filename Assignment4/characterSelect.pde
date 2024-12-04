@@ -4,6 +4,7 @@ class CharScreen {
   }
   
   void drawChar(){
+    startTime = millis(); // restart timer
     player.health = 3; // resetting health after a restart
     player.position = new PVector(width/2, 250);
     player.isGrounded = true;

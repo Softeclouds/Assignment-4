@@ -6,7 +6,7 @@ class GameOver {
   void display(){
     background(255);
     restartButton();
-    
+    imageMode(CORNER);
     image(restart,0,0);
   }
   void restartButton(){

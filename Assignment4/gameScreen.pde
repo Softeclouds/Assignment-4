@@ -1,9 +1,21 @@
 class GameScreen {
+   
+   int scoring = 1000;
+   int spawner = 1000;
+   int score;
+   
   GameScreen(){
-    
+    startTime = millis();
   }
   
   void drawGame(){
+    int elapsedTime = millis() - startTime;
+    if (elapsedTime > scoring) {
+      scoring += 1000;
+      startTime = millis();
+      score = scoring/1000;
+      println(score);
+    }
     background(0);
     rectMode(CORNERS);
    for (Platform platform : platforms) {
@@ -12,8 +24,6 @@ class GameScreen {
     player.display();       // drawing the player
     player.update();
     
-    
-
  
      for (int i = 0; i < enemies.size(); i++) {
     Enemy enemy = enemies.get(i);
@@ -37,7 +47,10 @@ class GameScreen {
   }
   
    void spawnEnemies() {
-  if (frameCount % 60 == 0) {  // Every second (60 frames), spawn a new enemy
+
+    int elapsedTime = millis() - startTime;
+  if (elapsedTime > spawner) {  
+    
     float spawnX = random(0, width);  // Random X position across the whole screen
     float spawnY = -50;  // Start from above the screen
     enemies.add(new Enemy(spawnX, spawnY));  // Create and add a new enemy
