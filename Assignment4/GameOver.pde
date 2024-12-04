@@ -1,5 +1,6 @@
 class GameOver {
   GameOver(){
+
     
   }
   
@@ -22,6 +23,7 @@ class GameOver {
        
      if(isClick == true){
        screenState = charActive; // switch to game screen
+       gameScreen.score = 0;
        
        isClick = false;
     

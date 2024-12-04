@@ -4,15 +4,15 @@ class GameScreen {
    int score;
    
   GameScreen(){
-    startTime = millis();
+   
   }
   
   void drawGame(){
     int elapsedTime = millis() - startTime;
     if (elapsedTime >= scoring) {
-      scoring += 1000;
+      score+=1;
       startTime = millis();
-      score = scoring/1000;
+    
       println(score);
     }
     background(0);
