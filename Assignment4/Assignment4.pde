@@ -33,6 +33,8 @@ PImage xanderStand;
 PImage title;
 PImage restart;
 
+PImage spike;
+
 void setup(){
   size(800,500);
   frameRate(60);
@@ -60,6 +62,7 @@ void setup(){
   xanderStand = loadImage("XanderStand0.png");
   title = loadImage("Title.png");
   restart = loadImage("Restart.png");
+  spike = loadImage("Spike.png");
 }
 
 void draw(){

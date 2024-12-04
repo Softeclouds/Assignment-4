@@ -32,6 +32,7 @@ class GameScreen {
     textSize(50);
     fill(255);
     text("Score: " +score,100,50);
+    text("Lives: " +player.health,700,50);
     
      for (int i = 0; i < enemies.size(); i++) {
     Enemy enemy = enemies.get(i);

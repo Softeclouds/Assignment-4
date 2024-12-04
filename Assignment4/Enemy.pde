@@ -20,6 +20,8 @@ class Enemy {
   void display() {
     fill(255, 0, 0);  // Red color for enemy
     noStroke();
-    ellipse(position.x, position.y, size, size);  // Draw enemy as a circle
+    imageMode(CENTER);
+    image(spike,position.x,position.y,size,size);
+   // ellipse(position.x, position.y, size, size);  // Draw enemy as a circle
   }
 }
