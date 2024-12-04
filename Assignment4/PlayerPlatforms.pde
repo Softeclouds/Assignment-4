@@ -32,7 +32,7 @@ class Player {
     // code from my previous assignment
    if (k == 'A')  {isLeft = b;} 
  else if (k == 'D') {isRight = b;} 
- else if (k == ' ' && isGrounded == true) { 
+ else if (k == 'W' && isGrounded == true) { 
    isJumping = true;
     isGrounded = false; 
  velocity.add(jumpStrength);
@@ -129,8 +129,8 @@ class Platform {
 
   boolean checkCollision(PVector playerPos, float playerSize) {
     // Check if player is on top of the platform
-    return playerPos.x > x - playerSize / 2 &&
-      playerPos.x < x + w + playerSize / 2 &&
+    return playerPos.x > x &&
+      playerPos.x < x + w &&
       playerPos.y + playerSize / 2 > y &&
       playerPos.y + playerSize / 2 < y + h;
   }
