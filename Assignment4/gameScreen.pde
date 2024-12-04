@@ -12,6 +12,7 @@ class GameScreen {
     player.display();       // drawing the player
     player.healthCheck();
     player.update();
+
     
   //  enemy.display();
   //  enemy.update();

@@ -39,7 +39,7 @@ void setup(){
 
   screenState = menuActive;
 
-  platforms.add(new Platform(100, 400, 200, 20));
+  platforms.add(new Platform(400, 344, 200, 20));
   platforms.add(new Platform(350, 300, 150, 20));
   platforms.add(new Platform(600, 500, 180, 20));
   

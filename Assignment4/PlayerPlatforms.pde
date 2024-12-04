@@ -1,115 +1,96 @@
-
 class Player {
   PVector position;
   PVector velocity;
-  float size = 44;
+  float sHeight = 44;
+  float sWidth = 18;
   boolean onGround;
+  int health = 20;
 
   boolean isLeft;  // a key
   boolean isRight; // d key
   boolean isGrounded;
   boolean isJumping;
-  boolean overY;
-  boolean overX;
 
-  int playerXpos;
   int speed;
   PVector jumpStrength;
-  PVector acceleration;
   float gravity = 0.5;
 
-  int health;
-
   Player() {
-    position = new PVector(width/2, 250);
-    velocity = new PVector(0, 0);         // initialize the velocity to start not moving
-    isGrounded = true;
-    health = 20;
-    acceleration = new PVector(0, gravity);   // initialize the acceleration to gravity like acceleration
+    position = new PVector(width / 2, 250);
+    velocity = new PVector(0, 0);
+    isGrounded = false;
     jumpStrength = new PVector(0, -10);
   }
-  void move(int k, boolean b) { // checks which keys are being pressed and sets direction to true
-    // code from my previous assignment
-   if (k == 'A')  {isLeft = b;} 
- else if (k == 'D') {isRight = b;} 
- else if (k == 'W' && isGrounded == true) { 
-   isJumping = true;
-    isGrounded = false; 
- velocity.add(jumpStrength);
-   }
-   
-   else if (k == 'Q') {isShift = b;}
-   else if (k == 'R') {health = health-5;}
-   
-   if(isJumping == true) {println("jump");}
-  }
 
-void healthCheck(){
+  void move(int k, boolean b) {
+    if (k == 'A') {
+      isLeft = b;
+    } else if (k == 'D') {
+      isRight = b;
+    } else if (k == 'W' && isGrounded) {
+      isJumping = true;
+      isGrounded = false;
+      velocity.add(jumpStrength);
+    }
+    else if(k == 'R') {health = health-5;}
+    else if(k == 'Q') {isShift = true;}
+  }
+ void healthCheck(){
   if(health <= 0 || position.y > 500) {
     screenState = failedActive;
   }
 }
-
   void update() {
-    if ( isShift == true) {
-      speed = 5;
-    } else {
-      speed = 3;
+    if(isShift) {speed = 5;}
+    else if (!isShift) {speed = 3;}
+    
+    // Horizontal movement
+    if (isLeft) {
+      position.x -= speed; // Speed for moving left
     }
-    if (isLeft == true) {
-     
-      position.x -=speed;    
-    } else if (isRight == true) {
-      
-      position.x +=speed;   
-    } else {
-      velocity.x = 0;
+    if (isRight) {
+      position.x += speed; // Speed for moving right
     }
+
     // Apply gravity
-    velocity.y += 0.5;
+    if (!isGrounded) {
+      velocity.y += gravity;
+    }
 
     // Update position
     position.add(velocity);
 
-    // Check collision with platforms
+    // Reset grounded state
     isGrounded = false;
+
+    // Check for collisions with platforms
     for (Platform platform : platforms) {
-      if (platform.checkCollision(position, size)) {
+      if (platform.checkCollision(position, sWidth, sHeight)) {
         isGrounded = true;
-        position.y = platform.y - size / 2; // Position player on top of the platform
-        velocity.y = 0; // Reset vertical velocity
-        break;
+
+        // Snap player to the top of the platform
+        position.y = platform.y - platform.h / 2 - sHeight / 2;
+
+        // Reset vertical velocity
+        velocity.y = 0;
+
+        break; // Exit the loop once a platform is detected
       }
     }
 
-    // Prevent falling out of the screen
-    if (position.y > height - size / 2) {
-      position.y = height - size / 2;
-      isGrounded = true;
-      velocity.y = 0;
-    }
-
-
+    
   }
 
   void display() {
-    noStroke();
-    rectMode(CENTER);
     fill(255);
-    // same from my previous project, just removed the up and down directions
-    if ((int(isRight) - int(isLeft)) == -1) {
-    }  // -1 = Left
-    else if ((int(isRight) - int(isLeft)) == 1) {
-    }   // 1 = Right
-    if (heroState == astrid) {
-      image(astridStand, position.x, position.y);
-
-      // if(playerXpos
-    } else if (heroState == xander) {
-      image(xanderStand, position.x, position.y);
-    }
+    noStroke();
+    imageMode(CENTER);
+    if(heroState == astrid) {image(astridStand,player.position.x,player.position.y);}
+    else if(heroState == xander) {image(xanderStand,player.position.x,player.position.y);}
+    
   }
 }
+
 
 class Platform {
   float x, y, w, h;
@@ -127,11 +108,10 @@ class Platform {
     rect(x, y, w, h);
   }
 
-  boolean checkCollision(PVector playerPos, float playerSize) {
-    // Check if player is on top of the platform
-    return playerPos.x > x &&
-      playerPos.x < x + w &&
-      playerPos.y + playerSize / 2 > y &&
-      playerPos.y + playerSize / 2 < y + h;
+  boolean checkCollision(PVector playerPos, float sWidth, float sHeight) {
+    // Check for bounding box collision
+    boolean withinX = playerPos.x + sWidth / 2 >= x - w / 2 && playerPos.x - sWidth / 2 <= x + w / 2;
+    boolean withinY = playerPos.y + sHeight / 2 >= y - h / 2 && playerPos.y + sHeight / 2 <= y + h / 2;
+    return withinX && withinY;
   }
 }
