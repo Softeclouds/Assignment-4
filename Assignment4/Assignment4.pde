@@ -26,6 +26,9 @@ PImage charSelects;
 PImage astridStand;
 PImage xanderStand;
 
+PImage title;
+PImage restart;
+
 void setup(){
   size(800,500);
   
@@ -46,6 +49,8 @@ void setup(){
   charSelects = loadImage("CharSelect.png");
   astridStand = loadImage("AstridStand0.png");
   xanderStand = loadImage("XanderStand0.png");
+  title = loadImage("Title.png");
+  restart = loadImage("Restart.png");
 }
 
 void draw(){

@@ -6,8 +6,11 @@ class GameOver {
   void display(){
     background(255);
     restartButton();
+    
+    image(restart,0,0);
   }
   void restartButton(){
+
     fill(100);
     rectMode(CORNERS);
     rect(262,200,536,299);

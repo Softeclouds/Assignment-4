@@ -6,6 +6,8 @@ class MenuScreen {
   void drawMenu(){
     background(255);
     menuButton();
+    
+    image(title,0,0);
   }
   void menuButton(){
     fill(0);
