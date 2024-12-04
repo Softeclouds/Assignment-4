@@ -33,7 +33,7 @@ class Player {
       velocity.add(jumpStrength);
     }
     else if(k == 'R') {health = health-5;}
-    else if(k == 'Q') {isShift = b;}
+    else if(k == SHIFT) {isShift = b;}
   }
  void healthCheck(){
   if(health <= 0 || position.y > 500) {
