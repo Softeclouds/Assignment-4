@@ -10,7 +10,6 @@ class GameScreen {
     platform.display();
   }
     player.display();       // drawing the player
-    player.healthCheck();
     player.update();
     
     
@@ -26,9 +25,14 @@ class GameScreen {
       enemies.remove(i);
       i--;  // Adjust the index because we just removed an element
     }
+    
+      if (player.checkCollision(player, enemy)) {
+      player.health -= 1;  // Reduce player's health by 1
+      enemies.remove(i);   // Remove the enemy
+      i--;  // Adjust the index due to removal
+    }
   }
-  //  enemy.display();
-  //  enemy.update();
+    player.healthCheck();
     spawnEnemies();
   }
   

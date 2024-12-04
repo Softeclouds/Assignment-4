@@ -89,6 +89,14 @@ class Player {
     else if(heroState == xander) {image(xanderStand,player.position.x,player.position.y);}
     
   }
+  
+  boolean checkCollision(Player player, Enemy enemy) {
+  // Check if the player and the enemy overlap on the x-axis and y-axis
+  return player.position.x - player.sWidth / 2 < enemy.position.x + enemy.size / 2 &&
+         player.position.x + player.sWidth / 2 > enemy.position.x - enemy.size / 2 &&
+         player.position.y - player.sHeight / 2 < enemy.position.y + enemy.size / 2 &&
+         player.position.y + player.sHeight / 2 > enemy.position.y - enemy.size / 2;
+}
 }
 
 
