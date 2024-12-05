@@ -8,12 +8,14 @@ class GameScreen {
   }
   
   void drawGame(){
+    // starting the timer
     int elapsedTime = millis() - startTime;
     if (elapsedTime >= scoring) {
       score+=1;
       startTime = millis();
-    
-      println(score);
+      
+    // used for debugging
+     // println(score);
     }
     background(0);
     rectMode(CORNERS);
@@ -23,12 +25,14 @@ class GameScreen {
     player.display();       // drawing the player
     player.update();
     
+    
     PFont font;
     font = createFont("Power red and green", 15);
     textAlign(CENTER);
     textFont(font);
     textSize(50);
     fill(255);
+    // displaying lives and score
     text("Score: " +score,100,50);
     text("Lives: " +player.health,700,50);
     
@@ -53,6 +57,7 @@ class GameScreen {
     spawnEnemies();
     
     if(score == 10){
+      // if the player reaches a score of 10, then they win
       screenState = youWin;
     }
   }

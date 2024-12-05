@@ -1,13 +1,12 @@
 class GameOver {
-  GameOver(){
-
-    
+  GameOver(){    
   }
   
   void display(){
     background(255);
-    restartButton();
+    restartButton(); // functionality of the restart button
     imageMode(CORNER);
+    // drawing the restart screen
     image(restart,0,0);
   }
   void restartButton(){
@@ -23,7 +22,7 @@ class GameOver {
        
      if(isClick == true){
        screenState = charActive; // switch to game screen
-       gameScreen.score = 0;
+       gameScreen.score = 0; // restarting the score
        
        isClick = false;
     

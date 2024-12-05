@@ -23,6 +23,7 @@ class Player {
   }
 
   void move(int k, boolean b) {
+    // checking which buttons are being pressed 
     if (k == 'A') {
       isLeft = b;
     } else if (k == 'D') {
@@ -32,15 +33,16 @@ class Player {
       isGrounded = false;
       velocity.add(jumpStrength);
     }
-    //else if(k == 'R') {health = health-5;}
     else if(k == SHIFT) {isShift = b;}
   }
  void healthCheck(){
+  // if the player falls off the screen then go to the game over screen
   if(health <= 0 || position.y > 500) {
     screenState = failedActive;
   }
 }
   void update() {
+    // changing the speed if the player is in a shift state
     if(isShift) {speed = 5;}
     else if (!isShift) {speed = 3;}
     
@@ -85,6 +87,7 @@ class Player {
     fill(255);
     noStroke();
     imageMode(CENTER);
+    // changing the hero image depending on which the player chose based on the heroState variable
     if(heroState == astrid) {image(astridStand,player.position.x,player.position.y);}
     else if(heroState == xander) {image(xanderStand,player.position.x,player.position.y);}
     

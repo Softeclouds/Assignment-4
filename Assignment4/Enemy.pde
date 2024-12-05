@@ -21,7 +21,8 @@ class Enemy {
     fill(255, 0, 0);  // Red color for enemy
     noStroke();
     imageMode(CENTER);
+    // drawing the spike ball 
     image(spike,position.x,position.y,size,size);
-   // ellipse(position.x, position.y, size, size);  // Draw enemy as a circle
+
   }
 }

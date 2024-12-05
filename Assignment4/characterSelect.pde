@@ -4,8 +4,9 @@ class CharScreen {
   }
   
   void drawChar(){
-    startTime = millis();
-    score = 0;
+    // resetting game stats and variables
+    startTime = millis(); // restarting the startTime
+    score = 0; // restarting score
     gameScreen.scoring = 1000;
     player.health = 3; // resetting health after a restart
     player.position = new PVector(width/2, 250);
@@ -13,11 +14,14 @@ class CharScreen {
     player.velocity = new PVector(0,0);
     astridStand = loadImage("AstridStand0.png");
     xanderStand = loadImage("XanderStand0.png");
+    
+    
     rectMode(CORNERS);
     noStroke();
     background(100);
     imageMode(CORNER);
     image(charSelects,0,0);
+    // drawing the 2 character buttons
     charButton1();
     charButton2();
   }
